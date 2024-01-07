@@ -1,0 +1,162 @@
+name: Verifable build
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.gitignore'
+      - '**/*.gitattributes'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
+  BUILD_CONFIGURATION: Release
+  BASE_TFM: net8.0
+
+jobs:
+  build-and-publish:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: windows
+            os: windows-latest
+          - platform: macos
+            os: macos-14
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@63c24ba6bd7ba022e95695ff85de572c04a18142
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            aka.ms:443
+            api.github.com:443
+            api.nuget.org:443
+            dashboard.stryker-mutator.io:443
+            dotnetcli.azureedge.net:443
+            github.com:443
+            nuget.pkg.github.com:443
+            api.clearlydefined.io:443
+            cacerts.digicert.com:80
+            ts-crl.ws.symantec.com:80
+            crl3.digicert.com:80
+            crl4.digicert.com:80
+            s.symcb.com:80
+            ocsp.digicert.com:80
+
+      - name: Checkout code
+        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+        with:
+          fetch-depth: 2
+
+      - name: Cache Nuget packages '${{ matrix.platform }}'
+        uses: actions/cache@ab5e6d0c87105b4c9c2047343972218f562e4319
+        with:
+          path: ${{ env.NUGET_PACKAGES }}
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: ${{ runner.os }}-nuget-
+
+      - name: Setup .NET SDK using global.json
+        uses: actions/setup-dotnet@4d6c8fcf3c8f7a60068d26b594648e99df24cee3
+        with:
+          global-json-file: global.json
+
+      - name: Install MAUI Workload
+        run: dotnet workload install maui --ignore-failed-sources
+
+      - name: Install dependencies
+        run: dotnet restore --locked-mode
+
+      - name: Restore local tools
+        run: dotnet tool restore
+
+      - name: Add Problem Matcher for dotnet-format
+        uses: xt0rted/dotnet-format-problem-matcher@b90c4f18e3daa4f8fd266e41eba4f351b2e00b75
+
+      # Optional: Uncomment to run dotnet format check
+      # - name: Run dotnet format
+      #   run: dotnet format --check
+
+      - name: Create directory for SBOM
+        run: mkdir -p "${{ github.workspace }}/${{ matrix.platform }}/sbom/"
+
+      - name: Run BOM analysis
+        run: dotnet tool run sbom-tool generate -DeleteManifestDirIfPresent true -BuildDropPath "${{ github.workspace }}/${{ matrix.platform }}/sbom/" -FetchLicenseInformation true -EnablePackageMetadataParsing true -BuildComponentPath . -PackageName "Verifable" -PackageSupplier "Lumoin" -NamespaceUriBase "https://lumoin.com/verifable" -PackageVersion 1.0.0 -Verbosity Verbose
+
+      - name: List Xcode installations
+        if: runner.os == 'macos'
+        run: ls /Applications | grep Xcode
+
+      - name: Select Xcode version
+        if: runner.os == 'macos'
+        run: sudo xcode-select -s /Applications/Xcode_15.2.app/Contents/Developer
+
+      - name: Build Verifable
+        shell: bash
+        run: dotnet build --binaryLogger --graphBuild -isolate:MessageUponIsolationViolation --configuration ${{ env.BUILD_CONFIGURATION }} -p:ContinuousIntegrationBuild=true
+
+      - name: Test
+        shell: bash
+        run: dotnet test --no-build --collect:"XPlat Code Coverage" --verbosity normal --configuration ${{ env.BUILD_CONFIGURATION }} --logger trx -property:DeterministicSourcePaths=true -property:IncludeTestAssembly=true --results-directory '${{ github.workspace }}/reports/coverage/'
+        timeout-minutes: 5
+
+      # Publishing default to "--configuration Release".
+      # - name: Publish Verifiable Windows
+      #  if: runner.os == 'windows'
+      #  shell: bash
+      #  run: dotnet publish ./src/Verifable/Verifable.csproj --output ./publish/windows --framework ${{ env.BASE_TFM }}-windows10.0.19041.0 -property:EnableCodeSigning=false -property:RuntimeIdentifierOverride=win10-x64 -property:PublishSingleFile=true
+
+      # - name: Publish Verifiable Android
+      #  if: runner.os == 'windows'
+      #  shell: bash
+      #  run: dotnet publish ./src/Verifable/Verifable.csproj --output ./publish/android --framework ${{ env.BASE_TFM }}-android -property:EnableCodeSigning=false
+
+      # - name: Publish Verifiable MacOS Catalyst
+      #  if: runner.os == 'macos'
+      #  shell: bash
+      #  run: dotnet publish ./src/Verifable/Verifable.csproj --output ./publish/macos --framework ${{ env.BASE_TFM }}-maccatalyst -property:EnableCodeSigning=false
+
+      # - name: Publish Verifiable IOS
+      #  if: runner.os == 'macos'
+      #  shell: bash
+      #  run: dotnet publish ./src/Verifable/Verifable.csproj --output ./publish/ios --framework ${{ env.BASE_TFM }}-ios -property:EnableCodeSigning=false
+
+      # - name: Upload Windows Artifact
+      #  if: matrix.platform == 'windows'
+      #  uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3
+      #  with:
+      #    name: windows-artifact
+      #    path: ./publish/windows/
+
+      # - name: Upload Android Artifact
+      #  if: matrix.platform == 'windows'
+      #  uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3
+      #  with:
+      #    name: android-artifact
+      #    path: ./publish/android/
+
+      # - name: Upload MacOS Artifact
+      #  if: matrix.platform == 'macos'
+      #  uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3
+      #  with:
+      #    name: macos-artifact
+      #    path: ./publish/macos/
+
+      # - name: Upload iOS Artifact
+      #  if: matrix.platform == 'macos'
+      #  uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3
+      #  with:
+      #    name: ios-artifact
+      #    path: ./publish/ios/
+

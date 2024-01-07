@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "dotnet-format": {
+      "version": "5.1.250801",
+      "commands": [
+        "dotnet-format"
+      ]
+    },
+    "dotnet-stryker": {
+      "version": "4.0.0",
+      "commands": [
+        "dotnet-stryker"
+      ]
+    },
+    "winsharpfuzz.commandline": {
+      "version": "1.0.0",
+      "commands": [
+        "winsharpfuzz"
+      ]
+    },
+    "winsharpfuzz.instrument": {
+      "version": "1.0.0",
+      "commands": [
+        "winsharpfuzz-instrument"
+      ]
+    },
+    "sharpfuzz.commandline": {
+      "version": "2.1.1",
+      "commands": [
+        "sharpfuzz"
+      ]
+    },    
+    "dotnet-reportgenerator-globaltool": {
+      "version": "5.2.2",
+      "commands": [
+        "reportgenerator"
+      ]
+    },
+    "microsoft.sbom.dotnettool": {
+      "version": "2.2.3",
+      "commands": [
+        "sbom-tool"
+      ]
+    }
+  }
+}
