@@ -1,0 +1,24 @@
+﻿<Project Sdk="MSTest.Sdk">
+
+  <PropertyGroup>    
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsTestProject>true</IsTestProject>
+    <RootNamespace>UITests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Appium.WebDriver" />
+    <PackageReference Include="System.Reactive" />
+    <PackageReference Include="Microsoft.Reactive.Testing" />   
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\UITests.Shared\**\*.cs" LinkBase="Shared" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Verifable.General\Verifable.General.csproj" />
+  </ItemGroup>
+
+</Project>

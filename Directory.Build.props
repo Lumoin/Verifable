@@ -1,0 +1,59 @@
+<Project>
+
+	<PropertyGroup>
+		<LangVersion>preview</LangVersion>
+    <TargetFramework>net10.0</TargetFramework>
+		<SourceRoot>$(MSBuildThisFileDirectory)</SourceRoot>		
+		<Nullable>enable</Nullable>
+		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>	
+		<NoWarn>$(NoWarn);1591;CA2007;CA1716;CA2201;CA1725;CA1848</NoWarn>		
+		<IncludeSymbols>true</IncludeSymbols>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<IncludePackageReferencesDuringMarkupCompilation>true</IncludePackageReferencesDuringMarkupCompilation>
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+		<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+
+		<NuGetAudit>true</NuGetAudit>
+		<NuGetAuditLevel>low</NuGetAuditLevel>
+	</PropertyGroup>
+
+	<!--
+		These files need not to be published and should not even,
+		since they would be placed into a same directory and their names
+		would clash.
+	-->
+	<ItemGroup>
+		<Content Remove="packages.lock.json"/>
+		<None Include="packages.lock.json">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>Never</CopyToPublishDirectory>
+		</None>
+	</ItemGroup>
+
+	<!-- Common analysis levels.	-->
+	<PropertyGroup>
+		<AnalysisMode>Recommended</AnalysisMode>
+		<AnalysisModeGlobalization>None</AnalysisModeGlobalization>
+		<AnalysisModeSecurity>All</AnalysisModeSecurity>
+		<AnalysisModeReliability>All</AnalysisModeReliability>
+	</PropertyGroup>
+
+	<!-- Common nuget package parameters and resources. -->	
+	<ItemGroup>
+		<PackageReference Update="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+
+		<PackageReference Update="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="3.3.4">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+
+		<PackageReference Update="Microsoft.VisualStudio.Threading.Analyzers" Version="17.5.22">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+</Project>
