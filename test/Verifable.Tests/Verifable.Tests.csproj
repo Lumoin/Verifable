@@ -1,0 +1,25 @@
+﻿<Project Sdk="MSTest.Sdk">
+  <PropertyGroup>    
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Reactive.Testing" />
+    <PackageReference Include="System.Reactive" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Verifable.General\Verifable.General.csproj" />
+    <ProjectReference Include="..\..\src\Verifable\Verifable.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.Testing.Extensions.CodeCoverage">
+      <VersionOverride>18.5.2</VersionOverride>
+    </PackageReference>
+  </ItemGroup>
+    
+</Project>

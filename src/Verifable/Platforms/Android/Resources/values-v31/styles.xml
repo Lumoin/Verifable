@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources
+  xmlns:tools="http://schemas.android.com/tools"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+  <!--
+    Maui.SplashTheme is based on
+    https://github.com/dotnet/maui/blob/main/src/Core/src/Platform/Android/Resources/values/styles.xml
+  -->
+  <style name="VerifableTheme" parent="@style/Maui.SplashTheme">
+    <!-- <item name="android:windowLightStatusBar">true</item> -->
+  </style>
+
+
+  <!-- Add this theme: -->
+  <!-- Splash Screen Theme (API >= 31) -->
+  <style name="SplashTheme" parent="Theme.Material3.DayNight.NoActionBar">
+    <item name="android:windowLightStatusBar">false</item>
+    <item name="android:windowSplashScreenBackground">@color/colorWindowSplashScreenBackground</item>
+    <item name="android:windowSplashScreenIconBackgroundColor">@color/colorWindowSplashScreenBackground</item>
+    <item name="android:windowSplashScreenAnimatedIcon">@drawable/ap_splash_screen</item>
+    <item name="android:windowSplashScreenAnimationDuration">1000</item>
+    <item name="android:windowSplashScreenBrandingImage">@drawable/branding_image_layer_list</item>
+    <item name="postSplashScreenTheme">@style/VerifableTheme</item>
+  </style>
+</resources>

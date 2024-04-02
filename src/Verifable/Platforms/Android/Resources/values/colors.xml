@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>  
+  <!-- Launcher colors. -->
+  <color name="colorLauncherPrimary">#FFFF1C</color>
+  <color name="colorLauncherSecondary">#00C3FF</color>
+  <color name="colorLauncherBackground">#FFFFFF</color>
+
+  <!-- Splash screen colors. -->
+  <color name="colorWindowSplashScreenBackground">#FFFFFF</color>
+  <color name="colorSplashBranding">#00C3FF</color>
+</resources>

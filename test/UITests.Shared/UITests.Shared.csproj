@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.Build.NoTargets/3.7.56">
+    
+  <PropertyGroup>    
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <GenerateMSBuildEditorConfigFile>False</GenerateMSBuildEditorConfigFile>
+    <GenerateTargetFrameworkAttribute>False</GenerateTargetFrameworkAttribute>
+    <RootNamespace>UITests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Reactive.Testing" />
+    <PackageReference Include="System.Reactive" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Verifable.General\Verifable.General.csproj" />
+    <ProjectReference Include="..\..\src\Verifable\Verifable.csproj" />
+  </ItemGroup>
+
+</Project>

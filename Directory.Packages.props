@@ -1,0 +1,30 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.0.0" />
+    <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.5.2" />
+    <PackageVersion Include="Microsoft.Testing.Extensions.TrxReport" Version="2.0.0-preview.25480.4" />
+    <PackageVersion Include="MSTest.TestAdapter" Version="4.0.0-preview.25480.4" />
+    <PackageVersion Include="MSTest.TestFramework" Version="4.0.0-preview.25480.4" />
+    <PackageVersion Include="System.Reactive" Version="6.1.0" />
+    <PackageVersion Include="Microsoft.Reactive.Testing" Version="6.1.0" />
+    <PackageVersion Include="MaterialColorUtilities" Version="0.3.0" />
+    <PackageVersion Include="MaterialColorUtilities.Maui" Version="0.3.0" />
+    <PackageVersion Include="Plugin.Maui.Audio" Version="3.0.1" />
+    <PackageVersion Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.2.0.2" />
+    <PackageVersion Include="Appium.WebDriver" Version="8.1.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Debug" Version="10.0.5" />
+    <PackageVersion Include="Microsoft.Extensions.Http" Version="10.0.0-preview.3.25171.5" />
+    <PackageVersion Include="Microsoft.Maui.Controls" Version="10.0.50" />
+    <PackageVersion Include="Microsoft.WindowsAppSDK" Version="2.0.250930001-experimental1" />
+    <PackageVersion Include="Microsoft.Web.WebView2" Version="1.0.3856.49" />
+
+    <!-- These are transient packages, pinned to an exact version to remove some warnings. -->
+    <PackageVersion Include="Xamarin.AndroidX.Lifecycle.Common" Version="2.10.0.2" />
+    <PackageVersion Include="Xamarin.AndroidX.Lifecycle.Runtime" Version="2.10.0.2" />
+    <PackageVersion Include="Xamarin.AndroidX.Lifecycle.Runtime.Android" Version="2.10.0.2" />
+  </ItemGroup>
+</Project>

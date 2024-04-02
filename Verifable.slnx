@@ -1,0 +1,39 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/Solution Items/.config/">
+    <File Path=".config/dotnet-tools.json" />
+  </Folder>
+  <Folder Name="/Solution Items/.github/">
+    <File Path=".github/CODEOWNERS" />
+    <File Path=".github/CODE_OF_CONDUCT.md" />
+    <File Path=".github/CONTRIBUTING.md" />
+    <File Path=".github/dependabot.yml" />
+    <File Path=".github/SECURITY.md" />
+    <File Path=".github/SUPPORT.md" />
+  </Folder>
+  <Folder Name="/Solution Items/.github/workflows/">
+    <File Path=".github/workflows/codeql-analysis.yml" />
+    <File Path=".github/workflows/main.yml" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Verifable.General/Verifable.General.csproj" />
+    <Project Path="src/Verifable/Verifable.csproj">
+      <Deploy />
+    </Project>
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/UITests.Android/UITests.Android.csproj" />
+    <Project Path="test/UITests.iOS/UITests.iOS.csproj" />
+    <Project Path="test/UITests.macOS/UITests.macOS.csproj" />
+    <Project Path="test/UITests.Shared/UITests.Shared.csproj" />
+    <Project Path="test/UITests.Windows/UITests.Windows.csproj" />
+    <Project Path="test/Verifable.Tests/Verifable.Tests.csproj" />
+  </Folder>
+</Solution>
