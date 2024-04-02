@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="colorPrimary">#ffff1c</color>
+  <color name="colorPrimaryDark">#00c3ff</color>
+  <color name="colorAccent">#3b3d3b</color>
+  <color name="gradientstart">#000000</color>
+  <color name="gradientend">#FFFFFF</color>
+
+  <color name="black">#FF000000</color>
+  <color name="white">#FFFFFFFF</color>
+  <color name="daynight">#FFFFFF</color>
+  <color name="brandingColor">#00C3FF</color>
+</resources>

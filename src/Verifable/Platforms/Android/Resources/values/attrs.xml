@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   
+    <attr name="splashBackgroundColor" format="color" />
+    <attr name="splashIconBackground" format="color" />
+    <attr name="brandingImageColor" format="color" />
+</resources>

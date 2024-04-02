@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Verifable" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand colors -->
+        <item name="colorPrimary">@color/primary_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent_dark</item>
+        
+        <!-- Custom attributes -->
+        <item name="splashBackgroundColor">@color/background_dark</item>
+        <item name="splashIconBackground">@color/primary_dark</item>
+        <item name="brandingImageColor">@color/branding_dark</item>
+        
+        <!-- System bars -->
+        <item name="android:statusBarColor">?attr/colorPrimaryDark</item>
+        <item name="android:navigationBarColor">?attr/colorPrimaryDark</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

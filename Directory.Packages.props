@@ -1,0 +1,27 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.Extensions.Http" Version="9.0.2" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="17.14.2" />
+    <PackageVersion Include="System.Reactive" Version="6.0.1" />
+    <PackageVersion Include="Microsoft.Reactive.Testing" Version="6.0.1" />   
+    <PackageVersion Include="MaterialColorUtilities" Version="0.3.0" />
+    <PackageVersion Include="MaterialColorUtilities.Maui" Version="0.3.0" />
+    <PackageVersion Include="Plugin.Maui.Audio" Version="3.0.1" />
+    <PackageVersion Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.14" />
+    <PackageVersion Include="Microsoft.Maui.Controls" Version="9.0.40" />
+    <PackageVersion Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.40" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Debug" Version="9.0.2" />
+    <PackageVersion Include="Microsoft.WindowsAppSDK" Version="1.7.250208002-preview1" />
+    <PackageVersion Include="Appium.WebDriver" Version="7.1.0" />
+    <PackageVersion Include="MSTest.TestAdapter" Version="3.8.2" />
+    <PackageVersion Include="MSTest.TestFramework" Version="3.8.2" />
+    <PackageVersion Include="Microsoft.Maui.Controls" Version="10.0.0-preview.1.25122.6" />
+    <PackageVersion Include="Microsoft.Maui.Controls.Compatibility" Version="10.0.0-preview.1.25122.6" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0-preview.1.25080.5" />
+  </ItemGroup>
+</Project>

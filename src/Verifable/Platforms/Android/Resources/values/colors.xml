@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base colors -->
+    <color name="primary_light">#512BD4</color>
+    <color name="primary_dark">#2B0B98</color>
+    <color name="accent_light">#00C3FF</color>
+    <color name="accent_dark">#0097CC</color>
+    
+    <!-- System colors -->
+    <color name="background_light">#FFFFFF</color>
+    <color name="background_dark">#000000</color>
+    
+    <!-- Branding colors -->
+    <color name="branding_light">#00C3FF</color>
+    <color name="branding_dark">#FFFFFF</color>
+</resources>

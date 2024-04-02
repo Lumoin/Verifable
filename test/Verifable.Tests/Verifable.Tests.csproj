@@ -1,0 +1,27 @@
+﻿<Project Sdk="MSTest.Sdk">
+  <PropertyGroup>    
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>    
+    <PackageReference Include="Microsoft.Reactive.Testing" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Verifable.General\Verifable.General.csproj" />
+    <ProjectReference Include="..\..\src\Verifable\Verifable.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Update="MSTest.Analyzers">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  
+
+</Project>
