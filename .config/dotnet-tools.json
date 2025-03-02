@@ -27,11 +27,11 @@
       ]
     },
     "sharpfuzz.commandline": {
-      "version": "2.1.1",
+      "version": "2.2.0",
       "commands": [
         "sharpfuzz"
       ]
-    },    
+    },
     "dotnet-reportgenerator-globaltool": {
       "version": "5.2.2",
       "commands": [
