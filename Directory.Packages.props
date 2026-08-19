@@ -13,7 +13,7 @@
     <PackageVersion Include="MaterialColorUtilities.Maui" Version="0.3.0" />
     <PackageVersion Include="Plugin.Maui.Audio" Version="3.0.1" />
     <PackageVersion Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.14" />
-    <PackageVersion Include="Microsoft.Maui.Controls" Version="9.0.40" />
+    <PackageVersion Include="Microsoft.Maui.Controls" Version="10.0.90" />
     <PackageVersion Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.40" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Debug" Version="9.0.2" />
     <PackageVersion Include="Microsoft.WindowsAppSDK" Version="1.7.250208002-preview1" />
