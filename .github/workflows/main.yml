@@ -25,7 +25,7 @@ jobs:
 
       - name: Build & Deploy Worker        
         if: ${{ github.ref == 'refs/heads/main' && github.repository_owner == 'Lumoin' }}
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
