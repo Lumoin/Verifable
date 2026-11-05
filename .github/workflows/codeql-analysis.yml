@@ -40,7 +40,7 @@ jobs:
         languages: 'csharp'
         queries: security-and-quality
 
-    - uses: actions/setup-dotnet@4d6c8fcf3c8f7a60068d26b594648e99df24cee3
+    - uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73
       with:
         global-json-file: global.json
 
